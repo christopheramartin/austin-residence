@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Austin Residence</title>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --text: #e0e0e0;
+      --accent: #8a9ca5;
+      --accent-dark: #5a6a75;
+      --card: #111111;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0a0a0a 0%, #0f1a1f 100%);
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5vw;
+    }
+
+    header {
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 70%, rgba(120, 140, 160, 0.08) 0%, transparent 60%);
+      animation: subtle-shift 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes subtle-shift {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(4%, 6%); }
+    }
+
+    h1 {
+      font-size: clamp(3.5rem, 12vw, 9rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.8rem;
+      background: linear-gradient(90deg, #e0e0e0, #b0c0c8, #e0e0e0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
+
+    .subheader {
+      font-size: clamp(1.35rem, 5vw, 2.1rem);
+      font-weight: 400;
+      max-width: 90%;
+      opacity: 0.92;
+      margin-bottom: 3rem;
+      line-height: 1.4;
+    }
+
+    .hero-img {
+      width: 100%;
+      max-width: 620px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .hero-img.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    main {
+      padding: 8rem 0 4rem;
+    }
+
+    section {
+      margin-bottom: 10rem;
+    }
+
+    h2 {
+      font-size: clamp(2.2rem, 7vw, 4.5rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 4rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease-out;
+    }
+
+    h2.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(140, 160, 180, 0.12);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      transition: all 0.6s ease;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+      border-color: rgba(140, 160, 180, 0.3);
+    }
+
+    .card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+      color: var(--accent);
+    }
+
+    .card p {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      opacity: 0.88;
+    }
+
+    footer {
+      text-align: center;
+      padding: 6rem 0 4rem;
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      opacity: 0.85;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        min-height: 90vh;
+      }
+      .principles {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 4.5rem; }
+      .subheader { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Austin Residence</h1>
+      <p class="subheader">The premiere Catholic men's house for University of Texas graduate students</p>
+      <img 
+        class="hero-img" 
+        src="st-josemaria-cowboy.jpeg" 
+        alt="St. Josemaría Escrivá riding with the Texas flag"
+      />
+    </div>
+  </header>
+
+  <main>
+    <section class="container">
+      <h2>Our Foundations</h2>
+      <div class="principles">
+        <div class="card">
+          <h3>Divine Filiation</h3>
+          <p>We are adopted sons of God.</p>
+        </div>
+        <div class="card">
+          <h3>Universal Call to Holiness</h3>
+          <p>God wants us to live forever with Him as a saint.</p>
+        </div>
+        <div class="card">
+          <h3>Sanctification of Ordinary Life</h3>
+          <p>Our holiness is to be lived not for an hour on Sundays in a pew but in everything we do — our studies, our work, our friendships.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Coming soon to a neighborhood near you
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.hero-img, h2, .card').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
